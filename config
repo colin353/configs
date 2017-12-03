@@ -168,4 +168,4 @@ bar {
         mode hide
 }
 
-exec --no-startup-id feh --bg-center ~/Desktop/desktop.jpg
+exec --no-startup-id feh --bg-scale ~/Desktop/desktop.jpg

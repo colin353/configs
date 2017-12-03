@@ -18,6 +18,9 @@ noremap x "_x
 " Visual mode pastes shouldn't fill default register.
 vnoremap p "_dP
 
+" Make backspace work properly
+set backspace=2
+
 set t_Co=256
 set t_ut=
 set cc=100
@@ -52,14 +55,32 @@ Plugin 'lifepillar/vim-solarized8.git'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/fzf'
 Plugin 'jceb/vim-orgmode'
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
 
 let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='codedark'
+
+" Make the default diff split vertical.
+:set diffopt+=vertical
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+augroup END
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 set background=dark
-colorscheme solarized8
+colorscheme codedark
 syntax on
