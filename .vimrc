@@ -10,6 +10,8 @@ inoremap jk <ESC>
 nmap ; :
 :command! -bar -bang Q quit<bang>
 
+let mapleader = " "
+
 " Fix the clipboard
 set clipboard=unnamed
 
@@ -34,6 +36,10 @@ let g:airline_skip_empty_sections = 1
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nnoremap <C-p> :FZF<CR>
+
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
 
 filetype off
 
