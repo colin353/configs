@@ -98,3 +98,4 @@ alias python=python2.7
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export EDITOR=vim
+export GOPATH=/home/colin/go

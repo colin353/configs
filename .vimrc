@@ -41,6 +41,12 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 
+nnoremap <leader>eb :ElmMake<CR>
+nnoremap <leader>et :ElmTest<CR>
+
+nnoremap <leader>gb :GoBuild<CR>
+nnoremap <leader>gt :GoTest<CR>
+
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -65,12 +71,23 @@ Plugin 'tomasiser/vim-code-dark'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
+Plugin 'fatih/vim-go'
+
+Plugin 'elmcast/elm-vim'
+
+let $GOPATH = "/home/colin/go"
 
 let g:airline_solarized_bg='dark'
 let g:airline_theme='codedark'
 
 " Make the default diff split vertical.
 :set diffopt+=vertical
+
+" Elm commands
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+
+
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
