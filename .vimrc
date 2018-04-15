@@ -34,8 +34,10 @@ let g:airline_symbols_linenr = ' '
 let g:airline_section_z = '%l:%c'
 let g:airline_skip_empty_sections = 1
 
+map // :nohlsearch<CR>
+
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :GFiles<CR>
 
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
@@ -46,6 +48,15 @@ nnoremap <leader>et :ElmTest<CR>
 
 nnoremap <leader>gb :GoBuild<CR>
 nnoremap <leader>gt :GoTest<CR>
+
+nnoremap <leader>cb :CargoBuild<CR>
+nnoremap <leader>ct :CargoTest<CR>
+
+nnoremap <leader>pp :Buffers<CR>
+nnoremap <leader>ps :Lines<CR>
+
+" Automatically format rust files.
+let g:rustfmt_autosave = 1
 
 filetype off
 
@@ -58,6 +69,7 @@ set background=dark
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/ListToggle'
 Plugin 'vim-airline/vim-airline'
@@ -66,16 +78,14 @@ Plugin 'mhinz/vim-signify'
 Plugin 'lifepillar/vim-solarized8.git'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 Plugin 'fatih/vim-go'
-
 Plugin 'elmcast/elm-vim'
-
-let $GOPATH = "/home/colin/go"
 
 let g:airline_solarized_bg='dark'
 let g:airline_theme='codedark'
@@ -87,7 +97,7 @@ let g:airline_theme='codedark'
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
 
-
+set nowrap
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier

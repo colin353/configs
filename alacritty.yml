@@ -1,5 +1,9 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
+shell:
+ program: /usr/local/bin/zsh
+ args:
+   - --login
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -60,7 +64,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 11.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -182,7 +186,12 @@ background_opacity: 1.0
 # (e.g. "\x1b[5~") is? Open another terminal (like xterm) without tmux,
 # then run `showkey -a` to get the sequence associated to a key combination.
 key_bindings:
+  - { key: F,  mods: Alt,           chars: "\x1bf"                       }
+  - { key: B,  mods: Alt,           chars: "\x1bb"                       }
+  - { key: E,  mods: Alt,           chars: "\x1be"                       }
+  - { key: A,  mods: Alt,           chars: "\x1ba"                       }
   - { key: V,        mods: Control|Shift,    action: Paste               }
+  - { key: V,        mods: Command,          action: Paste               }
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
