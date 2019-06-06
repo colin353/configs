@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="colin"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.config/configs/
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -88,6 +88,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/Documents/code/flutter/flutter/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 
 export TERM=xterm-256color
 
@@ -103,6 +104,22 @@ export GOPATH=$HOME/go
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc'; fi
+
+TZ='America/Los_Angeles'; export TZ
+
+echo "$input" | grep -oP "^$prefix\K.*"
+
+client () {
+  BASE_DIR=`tig base_dir`
+  cd $BASE_DIR
+  if [[ $# -eq 0 ]] ; then
+    MESSAGE=`tmux display-message -p '#W'`
+    cd $BASE_DIR/$MESSAGE
+  else
+    tig new $1
+    tmux rename-window $1
+    cd $BASE_DIR/$1
+  fi
+}
