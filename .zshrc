@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/Documents/code/flutter/flutter/bin:$PATH
 
 export TERM=xterm-256color
 
@@ -99,3 +100,9 @@ alias python=python2.7
 
 export EDITOR=vim
 export GOPATH=$HOME/go
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc'; fi
