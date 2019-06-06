@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 
 export TERM=xterm-256color
 
@@ -99,3 +100,20 @@ alias python=python2.7
 
 export EDITOR=vim
 export GOPATH=$HOME/go
+
+TZ='America/Los_Angeles'; export TZ
+
+echo "$input" | grep -oP "^$prefix\K.*"
+
+client () {
+  BASE_DIR=`tig base_dir`
+  cd $BASE_DIR
+  if [[ $# -eq 0 ]] ; then
+    MESSAGE=`tmux display-message -p '#W'`
+    cd $BASE_DIR/$MESSAGE
+  else
+    tig new $1
+    tmux rename-window $1
+    cd $BASE_DIR/$1
+  fi
+}

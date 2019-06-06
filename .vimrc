@@ -37,8 +37,6 @@ let g:airline_skip_empty_sections = 1
 map // :nohlsearch<CR>
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-nnoremap <C-p> :GFiles<CR>
-
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
@@ -51,6 +49,9 @@ nnoremap <leader>gt :GoTest<CR>
 
 nnoremap <leader>cb :CargoBuild<CR>
 nnoremap <leader>ct :CargoTest<CR>
+
+nnoremap <leader>bb :BlazeBuild<CR>
+nnoremap <leader>bt :BlazeTest<CR>
 
 nnoremap <leader>pp :Buffers<CR>
 nnoremap <leader>ps :Lines<CR>
@@ -86,6 +87,24 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 Plugin 'fatih/vim-go'
 Plugin 'elmcast/elm-vim'
+Plugin 'colin353/cargo-cult.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'prettier/vim-prettier'
+Plugin 'posva/vim-vue'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'bazelbuild/vim-bazel'
+
+func! CdToRootDir()
+  "let codefspath = matchlist(getcwd(), '\m\(/path/to/codefs/colinmerkel/.*/codefs\)')[1]
+  execute "cd $HOME/bazel"
+endf
+com! -nargs=0 CdToRootDir call CdToRootDir()
+
+map <leader>fd :cd %:p:h<CR>
+map <leader>fg :CdToRootDir<CR>
+
+map <c-p> :FZF<CR>
 
 let g:airline_solarized_bg='dark'
 let g:airline_theme='codedark'
@@ -101,14 +120,16 @@ set nowrap
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
 augroup END
+
+" Make indentation in vue two spaces.
+set shiftwidth=2
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
