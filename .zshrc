@@ -87,6 +87,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/Documents/scratch/emsdk-portable/emscripten/incoming:$PATH
+export PATH=$HOME/Documents/scratch/emsdk-portable/node/8.9.1_64bit/bin/node:$PATH
+
 
 export TERM=xterm-256color
 

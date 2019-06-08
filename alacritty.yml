@@ -1,10 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
-shell:
- program: /usr/local/bin/zsh
- args:
-   - --login
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
@@ -64,7 +59,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 14.0
+  size: 17
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
