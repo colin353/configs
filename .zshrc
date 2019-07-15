@@ -88,9 +88,12 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/Documents/code/flutter/flutter/bin:$PATH
+export PATH=$HOME/Documents/code/flutter/flutter/bin/cache/dart-sdk/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
+export PATH=$HOME/Documents/android_sdk/tools:$PATH
 
 export TERM=xterm-256color
+export ANDROID_HOME=/Users/colinmerkel/Library/Android/sdk
 
 fortune | cowsay -f tux
 
@@ -108,8 +111,6 @@ if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/path.zsh.inc' ]; 
 if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.inc'; fi
 
 TZ='America/Los_Angeles'; export TZ
-
-echo "$input" | grep -oP "^$prefix\K.*"
 
 client () {
   BASE_DIR=`tig base_dir`

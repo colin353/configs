@@ -58,6 +58,7 @@ nnoremap <leader>ps :Lines<CR>
 
 " Automatically format rust files.
 let g:rustfmt_autosave = 1
+let g:rustfmt_command = "rustup run nightly rustfmt"
 
 filetype off
 
@@ -94,6 +95,7 @@ Plugin 'prettier/vim-prettier'
 Plugin 'posva/vim-vue'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'bazelbuild/vim-bazel'
+Plugin 'dart-lang/dart-vim-plugin'
 
 func! CdToRootDir()
   "let codefspath = matchlist(getcwd(), '\m\(/path/to/codefs/colinmerkel/.*/codefs\)')[1]
