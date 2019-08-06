@@ -113,14 +113,23 @@ if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.in
 TZ='America/Los_Angeles'; export TZ
 
 client () {
-  BASE_DIR=`tig base_dir`
+  BASE_DIR=$HOME/Code
   cd $BASE_DIR
   if [[ $# -eq 0 ]] ; then
     MESSAGE=`tmux display-message -p '#W'`
     cd $BASE_DIR/$MESSAGE
+  elif [[ $1 == "auto" ]] ; then
+    MESSAGE=`tmux display-message -p '#W'`
+    if [ -d "$BASE_DIR/$MESSAGE" ]; then
+      cd $BASE_DIR/$MESSAGE
+    else
+      cd ~
+    fi
   else
-    tig new $1
     tmux rename-window $1
     cd $BASE_DIR/$1
   fi
 }
+
+client auto
+
