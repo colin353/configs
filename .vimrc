@@ -100,13 +100,29 @@ Plugin 'bazelbuild/vim-bazel'
 Plugin 'dart-lang/dart-vim-plugin'
 
 func! CdToRootDir()
-  "let codefspath = matchlist(getcwd(), '\m\(/path/to/codefs/colinmerkel/.*/codefs\)')[1]
-  execute "cd $HOME/bazel"
+  let p = matchlist(getcwd(), '\m\(/Users/colinmerkel/Code/[^/]*/\)')
+  if len(p) > 0
+    execute "cd " . p[1]
+  endif
 endf
 com! -nargs=0 CdToRootDir call CdToRootDir()
 
 map <leader>fd :cd %:p:h<CR>
 map <leader>fg :CdToRootDir<CR>
+
+func! LoadGitBuffers()
+  let files = systemlist('files')
+
+  if len(getbufinfo({'buflisted':1})) <= 1
+    for file in files
+      execute "e " . fnameescape(file)
+    endfor
+  endif
+  execute ":Buffers"
+endf
+com! -nargs=0 LoadGitBuffers call LoadGitBuffers()
+
+nnoremap <leader>pp :LoadGitBuffers<CR>
 
 map <c-p> :FZF<CR>
 
