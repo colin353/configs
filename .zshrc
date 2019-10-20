@@ -98,8 +98,6 @@ export PATH=$HOME/Documents/android_sdk/tools:$PATH
 export TERM=xterm-256color
 export ANDROID_HOME=/Users/colinmerkel/Library/Android/sdk
 
-fortune | cowsay -f tux
-
 alias tmux='tmux -u'
 alias python=python2.7
 
@@ -115,8 +113,8 @@ if [ -f '/Users/colinmerkel/Documents/scratch/google-cloud-sdk/completion.zsh.in
 
 TZ='America/New_York'; export TZ
 
-client () {
-  BASE_DIR=$HOME/Code
+cclient () {
+  BASE_DIR=$HOME/Documents/code
   cd $BASE_DIR
   if [[ $# -eq 0 ]] ; then
     MESSAGE=`tmux display-message -p '#W'`
@@ -131,6 +129,30 @@ client () {
   else
     tmux rename-window $1
     cd $BASE_DIR/$1
+  fi
+}
+
+client () {
+  BASE_DIR=$HOME/codefs
+  cd $BASE_DIR
+  if [[ $# -eq 0 ]] ; then
+    MESSAGE=`tmux display-message -p '#W'`
+    cd $BASE_DIR/$MESSAGE
+  elif [[ $1 == "auto" ]] ; then
+    MESSAGE=`tmux display-message -p '#W'`
+    if [ -d "$BASE_DIR/$MESSAGE" ]; then
+      cd $BASE_DIR/$MESSAGE
+    else
+      cd ~
+    fi
+  else
+    tmux rename-window $1
+    if [ -d "$BASE_DIR/$1" ]; then
+      cd $BASE_DIR/$1
+    else
+      tig new $1
+      cd $BASE_DIR/$1
+    fi
   fi
 }
 

@@ -68,7 +68,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 set termguicolors
-set background=dark
+set background=light
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -84,7 +84,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'jceb/vim-orgmode'
-Plugin 'tomasiser/vim-code-dark'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
@@ -100,7 +99,7 @@ Plugin 'bazelbuild/vim-bazel'
 Plugin 'dart-lang/dart-vim-plugin'
 
 func! CdToRootDir()
-  let p = matchlist(getcwd(), '\m\(/Users/colinmerkel/Code/[^/]*/\)')
+  let p = matchlist(getcwd(), '\m\(/home/colin/Documents/code/[^/]*/\)')
   if len(p) > 0
     execute "cd " . p[1]
   endif
@@ -126,8 +125,7 @@ nnoremap <leader>pp :LoadGitBuffers<CR>
 
 map <c-p> :FZF<CR>
 
-let g:airline_solarized_bg='dark'
-let g:airline_theme='codedark'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " Make the default diff split vertical.
 :set diffopt+=vertical
@@ -155,6 +153,6 @@ set shiftwidth=2
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set background=dark
-colorscheme codedark
+set background=light
+colorscheme PaperColor
 syntax on
